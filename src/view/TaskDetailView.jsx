@@ -23,6 +23,7 @@ const TaskDetailView = () => {
   }
 
   useEffect(() => {
+    refreshData();
     setInterval(() => {
       refreshData();
     }, 1000);
