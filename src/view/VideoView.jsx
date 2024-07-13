@@ -74,7 +74,7 @@ const VideoView = () => {
     {
       title: '车牌分析',
       key: 'plateProcessed',
-      render: (record) => statusTag(record.plateProcessed),
+      render: (record) => statusTag(record.plateProcessed, () => runPlateDetection(record.videoId)),
     },
     {
       title: '操作',
@@ -85,6 +85,18 @@ const VideoView = () => {
 
   const runStatistic = (videoId) => {
     service.task.runStatistic(videoId).then(res => {
+      message.success('任务提交成功');
+      refreshData();
+    }).catch(err => {
+      notification.error({
+        message: '任务提交失败',
+        description: `${err}`
+      });
+    });
+  }
+
+  const runPlateDetection = (videoId) => {
+    service.task.runPlateDetection(videoId).then(res => {
       message.success('任务提交成功');
       refreshData();
     }).catch(err => {

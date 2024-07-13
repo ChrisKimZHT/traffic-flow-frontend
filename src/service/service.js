@@ -73,6 +73,16 @@ const service = {
         }
       })
     },
+    runPlateDetection: (videoId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/task/runPlateDetection',
+        params: {
+          videoId
+        }
+      })
+    },
     log: (taskId) => {
       return axios({
         baseURL,
