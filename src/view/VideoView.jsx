@@ -141,8 +141,12 @@ const VideoView = () => {
     document.getElementById('fileInput').click();
   }
 
-  // eslint-disable-next-line
-  useEffect(() => refreshData(), []);
+  useEffect(() => {
+    refreshData()
+    const interval = setInterval(refreshData, 1000);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className='video-view'>
