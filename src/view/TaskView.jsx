@@ -12,13 +12,13 @@ const TaskView = () => {
 
   const statusTag = (status) => {
     if (status === 0) {
-      return <Tag className='status-tag' color='grey'>排队中</Tag>
+      return <Tag className='status-tag' color='grey'>正在排队</Tag>
     } else if (status === 1) {
-      return <Tag className='status-tag' color='blue'>运行中</Tag>
+      return <Tag className='status-tag' color='blue'>正在运行</Tag>
     } else if (status === 2) {
-      return <Tag className='status-tag' color='green'>成功</Tag>
+      return <Tag className='status-tag' color='green'>运行成功</Tag>
     } else if (status === 3) {
-      return <Tag className='status-tag' color='red'>失败</Tag>
+      return <Tag className='status-tag' color='red'>运行失败</Tag>
     }
   }
 
