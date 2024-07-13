@@ -1,0 +1,15 @@
+.video-view {
+  .head-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.6rem;
+    }
+  }
+
+  .table {
+    margin-top: 10px;
+  }
+}

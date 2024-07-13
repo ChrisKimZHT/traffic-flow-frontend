@@ -10,6 +10,15 @@ const service = {
       method: 'get',
       url: '/'
     })
+  },
+  video: {
+    list: () => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/video/list'
+      })
+    }
   }
 }
 
