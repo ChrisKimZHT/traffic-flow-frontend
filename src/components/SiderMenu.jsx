@@ -5,11 +5,11 @@ import { VideoCameraOutlined, CarryOutOutlined, CarOutlined, UserOutlined, AreaC
 import { useNavigate } from 'react-router-dom';
 
 const menuItems = [
-  {
-    key: '/',
-    label: '状态面板',
-    icon: <DashboardOutlined />
-  },
+  // {
+  //   key: '/',
+  //   label: '状态面板',
+  //   icon: <DashboardOutlined />
+  // },
   {
     key: '/video',
     label: '视频管理',
