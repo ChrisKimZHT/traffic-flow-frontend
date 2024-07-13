@@ -85,6 +85,9 @@ const StatView = () => {
           />
         </Col>
         <Col span={16} className='col-right'>
+          <video className='video' controls preload='auto' key={selectedVideoId}>
+            <source src={`${window.baseURL}stat/resultVideo?videoId=${selectedVideoId}`} type='video/mp4' />
+          </video>
           <Row className='img-row' style={{ display: selectedVideoId === null ? 'none' : '' }}>
             <Col span={12} className='img-col-left'>
               <img className='img' src={`${window.baseURL}stat/resultPlot?videoId=${selectedVideoId}&plotName=count_per_frame.png`} alt='stat' />
@@ -93,9 +96,6 @@ const StatView = () => {
               <img className='img' src={`${window.baseURL}stat/resultPlot?videoId=${selectedVideoId}&plotName=count_prefix_sum.png`} alt='stat' />
             </Col>
           </Row>
-          <video className='video' controls preload='auto' key={selectedVideoId}>
-            <source src={`${window.baseURL}stat/resultVideo?videoId=${selectedVideoId}`} type='video/mp4' />
-          </video>
         </Col>
       </Row>
     </div>
