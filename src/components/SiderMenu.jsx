@@ -59,7 +59,7 @@ const SiderMenu = ({ pathname }) => {
       mode="inline"
       items={menuItems}
       selectedKeys={selectedKeys}
-      onSelect={({ key }) => { setSelectedKeys([key]); navigate(key); }}
+      onClick={({ key }) => { setSelectedKeys([key]); navigate(key); }}
     />
   );
 }
