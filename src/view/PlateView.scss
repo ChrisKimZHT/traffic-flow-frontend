@@ -1,0 +1,46 @@
+.plate-view {
+  .head-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.6rem;
+    }
+
+    .operation {
+      .btn {
+        margin-left: 12px;
+      }
+    }
+  }
+
+  .row {
+    margin-top: 10px;
+  }
+
+  .col-mid {
+    padding-left: 10px;
+  }
+
+  .col-right {
+    padding-left: 10px;
+
+    .img-list {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: white;
+      min-height: 50vh;
+      max-height: 75vh;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+
+      .img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

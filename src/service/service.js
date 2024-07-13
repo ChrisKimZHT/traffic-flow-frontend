@@ -93,6 +93,19 @@ const service = {
         }
       })
     }
+  },
+  plate: {
+    search: (videoId, plate) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/plate/search',
+        params: {
+          videoId,
+          plate
+        }
+      })
+    }
   }
 }
 
