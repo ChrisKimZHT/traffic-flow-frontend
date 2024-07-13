@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './VideoView.scss';
 import { RedoOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { App, Button, Table, Tag } from 'antd';
+import { App, Button, Popconfirm, Table, Tag } from 'antd';
 import service from '../service/service';
 import parseFileSize from '../util/parseFileSize';
 import { Link } from 'react-router-dom';
@@ -12,14 +12,24 @@ const VideoView = () => {
   const [tableData, setTableData] = useState([]);
   const { message, notification } = App.useApp();
 
-  const statusTag = (status) => {
+  const statusTag = (status, handleClick) => {
+    let tag = null;
     if (status === 0) {
-      return <Tag color='red'>未分析</Tag>;
+      tag = <Tag className='status-tag' color='red'>未分析</Tag>;
     } else if (status === 1) {
-      return <Tag color='blue'>运行中</Tag>;
+      tag = <Tag className='status-tag' color='blue'>运行中</Tag>;
     } else if (status === 2) {
-      return <Tag color='green'>已完成</Tag>;
+      tag = <Tag className='status-tag' color='green'>已完成</Tag>;
     }
+    return <Popconfirm
+      title="确定运行任务?"
+      description="任务提交后课可前往任务列表查看进度。"
+      onConfirm={handleClick}
+      okText="确定"
+      cancelText="取消"
+    >
+      {tag}
+    </Popconfirm>
   }
 
   const columns = [
@@ -53,21 +63,18 @@ const VideoView = () => {
     },
     {
       title: '流量分析',
-      dataIndex: 'statProcessed',
       key: 'statProcessed',
-      render: (statProcessed) => statusTag(statProcessed),
+      render: (record) => statusTag(record.statProcessed, () => runStatistic(record.videoId)),
     },
     {
       title: '人脸分析',
-      dataIndex: 'faceProcessed',
       key: 'faceProcessed',
-      render: (faceProcessed) => statusTag(faceProcessed),
+      render: (record) => statusTag(record.faceProcessed),
     },
     {
       title: '车牌分析',
-      dataIndex: 'plateProcessed',
       key: 'plateProcessed',
-      render: (plateProcessed) => statusTag(plateProcessed),
+      render: (record) => statusTag(record.plateProcessed),
     },
     {
       title: '操作',
@@ -76,10 +83,25 @@ const VideoView = () => {
     }
   ];
 
+  const runStatistic = (videoId) => {
+    service.task.runStatistic(videoId).then(res => {
+      message.success('任务提交成功');
+      refreshData();
+    }).catch(err => {
+      notification.error({
+        message: '任务提交失败',
+        description: `${err}`
+      });
+    });
+  }
+
   const refreshData = () => {
     setIsLoading(true);
     service.video.list().then(res => {
       const outputData = res.data.data;
+      for (let i = 0; i < outputData.length; i++) {
+        outputData[i].key = i;
+      }
       setTableData(outputData);
       setIsLoading(false);
     }).catch(err => {

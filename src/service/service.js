@@ -19,6 +19,18 @@ const service = {
         url: '/video/list'
       })
     }
+  },
+  task: {
+    runStatistic: (videoId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/task/runStatistic',
+        params: {
+          videoId
+        }
+      })
+    }
   }
 }
 
