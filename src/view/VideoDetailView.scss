@@ -1,23 +1,24 @@
 .video-detail-view {
-  .head-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .title {
-      font-size: 1.6rem;
-    }
-
-    .operation {
-      .btn {
-        margin-left: 6px;
-      }
-    }
+  .title {
+    font-size: 1.6rem;
   }
 
   .video {
+    margin-top: 10px;
     width: 100%;
     border-radius: 10px;
+  }
+
+  .info {
+    margin-top: 10px;
+  }
+
+  .col-right {
+    padding-left: 10px;
+  }
+
+  .confirm-btn {
+    float: right;
     margin-top: 10px;
   }
 }

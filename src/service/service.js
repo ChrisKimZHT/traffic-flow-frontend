@@ -31,6 +31,16 @@ const service = {
           'Content-Type': 'multipart/form-data'
         }
       })
+    },
+    getInfo: (videoId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/video/getInfo',
+        params: {
+          videoId
+        }
+      })
     }
   },
   task: {
