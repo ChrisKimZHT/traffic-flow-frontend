@@ -21,11 +21,15 @@ const TaskDetailView = () => {
         description: `${err}`
       });
     });
-    logButtom.current.scrollIntoView({ behavior: 'smooth' });
+    logButtom.current.scrollIntoView();
   }
 
-  // eslint-disable-next-line
-  useEffect(() => refreshData(), []);
+  useEffect(() => {
+    refreshData()
+    const interval = setInterval(refreshData, 500);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, []);
 
   const statusTag = (status) => {
     if (status === 0) {
