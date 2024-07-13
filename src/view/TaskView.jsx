@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import service from '../service/service';
 import dayjs from 'dayjs';
 import './TaskView.scss';
+import { Link } from 'react-router-dom';
 
 const TaskView = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +51,11 @@ const TaskView = () => {
       key: 'status',
       render: (status) => statusTag(status),
     },
+    {
+      title: '操作',
+      key: 'action',
+      render: (record) => <Link to={`/task/${record.taskId}`}>详情</Link>,
+    }
   ];
 
   const refreshData = () => {

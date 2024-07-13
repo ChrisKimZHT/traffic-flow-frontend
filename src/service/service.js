@@ -72,6 +72,16 @@ const service = {
           videoId
         }
       })
+    },
+    log: (taskId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/task/log',
+        params: {
+          taskId
+        }
+      })
     }
   }
 }

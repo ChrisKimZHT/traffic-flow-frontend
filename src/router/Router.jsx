@@ -4,6 +4,7 @@ import VideoView from '../view/VideoView';
 import VideoDetailView from '../view/VideoDetailView';
 import TaskView from '../view/TaskView';
 import StatView from '../view/StatView';
+import TaskDetailView from '../view/TaskDetailView';
 
 
 const Router = () => {
@@ -14,6 +15,7 @@ const Router = () => {
       <Route path='/video/:videoId' element={<VideoDetailView />} />
       <Route path='/stat' element={<StatView />} />
       <Route path='/task' element={<TaskView />} />
+      <Route path='/task/:taskId' element={<TaskDetailView />} />
     </Routes>
   );
 }

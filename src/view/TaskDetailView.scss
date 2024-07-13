@@ -1,0 +1,30 @@
+.task-detail-view {
+  .head-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.6rem;
+    }
+
+    .operation {
+      .btn {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .log {
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    height: 75vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: auto;
+    white-space: pre;
+    padding: 15px;
+  }
+}
