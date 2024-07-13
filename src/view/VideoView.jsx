@@ -23,7 +23,7 @@ const VideoView = () => {
     }
     return <Popconfirm
       title="确定运行任务?"
-      description="任务提交后课可前往任务列表查看进度。"
+      description="任务提交后可前往任务列表查看进度。"
       onConfirm={handleClick}
       okText="确定"
       cancelText="取消"
