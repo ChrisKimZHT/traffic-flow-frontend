@@ -18,6 +18,19 @@ const service = {
         method: 'get',
         url: '/video/list'
       })
+    },
+    upload: (file) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      return axios({
+        baseURL,
+        method: 'post',
+        url: '/video/upload',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     }
   },
   task: {

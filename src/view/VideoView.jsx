@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './VideoView.scss';
-import { RedoOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { RedoOutlined, UploadOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { App, Button, Popconfirm, Table, Tag } from 'antd';
 import service from '../service/service';
@@ -112,6 +112,23 @@ const VideoView = () => {
     });
   }
 
+  const handleUpload = () => {
+    let selectedFile = null;
+    document.getElementById('fileInput').addEventListener('change', function () {
+      selectedFile = this.files[0];
+      service.video.upload(selectedFile).then(res => {
+        message.success('上传成功');
+        refreshData();
+      }).catch(err => {
+        notification.error({
+          message: '上传失败',
+          description: `${err}`
+        });
+      });
+    });
+    document.getElementById('fileInput').click();
+  }
+
   // eslint-disable-next-line
   useEffect(() => refreshData(), []);
 
@@ -119,7 +136,10 @@ const VideoView = () => {
     <div className='video-view'>
       <div className='head-line'>
         <div className='title'><VideoCameraOutlined /> 视频管理</div>
-        <Button type='primary' onClick={refreshData} shape='circle'><RedoOutlined /></Button>
+        <div className='operation'>
+          <Button type='primary' className='btn' onClick={handleUpload} shape='circle'><UploadOutlined /></Button>
+          <Button type='primary' className='btn' onClick={refreshData} shape='circle'><RedoOutlined /></Button>
+        </div>
       </div>
       <Table
         className='table'
@@ -129,6 +149,7 @@ const VideoView = () => {
         bordered={true}
         pagination={{ position: ["bottomCenter"] }}
       />
+      <input type="file" id="fileInput" style={{ display: "none" }} />
     </div>
   );
 }
