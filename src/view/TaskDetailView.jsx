@@ -22,12 +22,12 @@ const TaskDetailView = () => {
     });
   }
 
-  setInterval(() => {
-    refreshData();
-  }, 1000);
-
-  // eslint-disable-next-line
-  useEffect(() => refreshData(), []);
+  useEffect(() => {
+    setInterval(() => {
+      refreshData();
+    }, 1000);
+    // eslint-disable-next-line
+  }, []);
 
   const statusTag = (status) => {
     if (status === 0) {
