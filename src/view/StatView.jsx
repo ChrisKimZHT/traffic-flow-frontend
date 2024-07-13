@@ -85,7 +85,7 @@ const StatView = () => {
           />
         </Col>
         <Col span={16} className='col-right'>
-          <Row className='img-row'>
+          <Row className='img-row' style={{ display: selectedVideoId === null ? 'none' : '' }}>
             <Col span={12} className='img-col-left'>
               <img className='img' src={`${window.baseURL}stat/resultPlot?videoId=${selectedVideoId}&plotName=count_per_frame.png`} alt='stat' />
             </Col>
