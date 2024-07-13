@@ -1,0 +1,21 @@
+.task-view {
+  .head-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 1.6rem;
+    }
+
+    .operation {
+      .btn {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .table {
+    margin-top: 10px;
+  }
+}
