@@ -22,13 +22,8 @@ const TaskDetailView = () => {
     });
   }
 
-  useEffect(() => {
-    refreshData();
-    setInterval(() => {
-      refreshData();
-    }, 1000);
-    // eslint-disable-next-line
-  }, []);
+  // eslint-disable-next-line
+  useEffect(() => refreshData(), []);
 
   const statusTag = (status) => {
     if (status === 0) {
@@ -46,6 +41,9 @@ const TaskDetailView = () => {
     <div className='task-detail-view'>
       <div className='head-line'>
         <div className='title'><FileTextOutlined /> 运行日志</div>
+        <div className='operation'>
+          <Button type='primary' className='btn' onClick={refreshData} shape='circle'><RedoOutlined /></Button>
+        </div>
       </div>
       <div className='status'>
         <span style={{ display: data.status === 1 ? "" : "none" }}>
