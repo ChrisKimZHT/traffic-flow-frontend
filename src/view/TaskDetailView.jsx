@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { App, Button, Tag } from 'antd';
 import { FileTextOutlined, RedoOutlined } from '@ant-design/icons';
@@ -10,6 +10,7 @@ const TaskDetailView = () => {
   const { taskId } = useParams();
   const [data, setData] = useState({});
   const { message, notification } = App.useApp();
+  const logButtom = useRef(null);
 
   const refreshData = () => {
     service.task.log(taskId).then(res => {
@@ -20,6 +21,7 @@ const TaskDetailView = () => {
         description: `${err}`
       });
     });
+    logButtom.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   // eslint-disable-next-line
@@ -53,8 +55,9 @@ const TaskDetailView = () => {
         <span>状态：</span>
         <span>{statusTag(data.status)}</span>
       </div>
-      <div className='log'>
+      <div className='log' >
         {data.log}
+        <div className='log-buttom' ref={logButtom}></div>
       </div>
     </div>
   );
