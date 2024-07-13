@@ -10,14 +10,30 @@ import service from '../service/service';
 const VideoDetailView = () => {
   const { videoId } = useParams();
   const [videoInfo, setVideoInfo] = useState({});
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const { message, notification } = App.useApp();
 
   const refreshData = () => {
     service.video.getInfo(videoId).then(res => {
       setVideoInfo(res.data.data);
+      setTitle(res.data.data.title);
+      setDescription(res.data.data.description);
     }).catch(err => {
       notification.error({
         message: '获取视频信息失败',
+        description: err.message
+      });
+    });
+  }
+
+  const handleUpdateInfo = () => {
+    service.video.updateInfo(videoId, title, description).then(res => {
+      message.success('更新成功');
+      refreshData();
+    }).catch(err => {
+      notification.error({
+        message: '更新失败',
         description: err.message
       });
     });
@@ -38,12 +54,12 @@ const VideoDetailView = () => {
         <Col span={6} className='col-right'>
           <div className='title'><InfoCircleOutlined /> 信息</div>
           <Input className='info' addonBefore="编号" value={videoInfo?.videoId} disabled />
-          <Input className='info' addonBefore="标题" value={videoInfo?.title} />
-          <Input className='info' addonBefore="描述" value={videoInfo?.description} />
+          <Input className='info' addonBefore="标题" value={title} onChange={(e) => { setTitle(e.target.value) }} />
+          <Input className='info' addonBefore="描述" value={description} onChange={(e) => { setDescription(e.target.value) }} />
           <Input className='info' addonBefore="文件名称" value={videoInfo?.fileName} disabled />
           <Input className='info' addonBefore="文件大小" value={parseFileSize(videoInfo?.fileSize)} disabled />
           <Input className='info' addonBefore="上传时间" value={dayjs.unix(videoInfo?.uploadTime).format('YYYY-MM-DD HH:mm:ss')} disabled />
-          <Button className='confirm-btn' type='primary'>
+          <Button className='confirm-btn' type='primary' onClick={handleUpdateInfo}>
             <CheckCircleTwoTone /> 确认
           </Button>
         </Col>

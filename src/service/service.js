@@ -41,6 +41,18 @@ const service = {
           videoId
         }
       })
+    },
+    updateInfo: (videoId, title, description) => {
+      return axios({
+        baseURL,
+        method: 'post',
+        url: '/video/updateInfo',
+        data: {
+          videoId,
+          title,
+          description
+        }
+      })
     }
   },
   task: {
