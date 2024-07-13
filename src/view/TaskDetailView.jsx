@@ -45,13 +45,12 @@ const TaskDetailView = () => {
     <div className='task-detail-view'>
       <div className='head-line'>
         <div className='title'><FileTextOutlined /> 运行日志</div>
-        <div className='operation'>
-          <Button type='primary' className='btn' onClick={refreshData} shape='circle'><RedoOutlined /></Button>
-        </div>
       </div>
       <div className='status'>
-        <span>已运行：</span>
-        <span><Tag>{dayjs().diff(dayjs.unix(data.startTime), 'second')} sec</Tag></span>
+        <span style={{ display: data.status === 1 ? "" : "none" }}>
+          <span>已运行：</span>
+          <span><Tag>{dayjs().diff(dayjs.unix(data.startTime), 'second')} sec</Tag></span>
+        </span>
         <span>状态：</span>
         <span>{statusTag(data.status)}</span>
       </div>
