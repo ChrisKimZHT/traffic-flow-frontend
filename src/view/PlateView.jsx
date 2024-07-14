@@ -12,8 +12,6 @@ const PlateView = () => {
   const [selectedVideoId, setSelectedVideoId] = useState(null);
   const [plateStr, setPlateStr] = useState('');
   const [plateData, setPlateData] = useState([]);
-  const [selectedPlateRowKeys, setSelectedPlateRowKeys] = useState([]);
-  const [selectedBoxId, setSelectedBoxId] = useState(null);
   const [videoName, setVideoName] = useState('');
 
   const columns = [
