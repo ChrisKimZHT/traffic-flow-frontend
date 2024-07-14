@@ -128,6 +128,22 @@ const service = {
         }
       })
     },
+    search: (file, videoId) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      return axios({
+        baseURL,
+        method: 'post',
+        url: '/face/search',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        params: {
+          videoId
+        }
+      })
+    },
   }
 }
 

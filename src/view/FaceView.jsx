@@ -11,6 +11,7 @@ const FaceView = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [selectedVideoId, setSelectedVideoId] = useState(null);
   const [faceData, setFaceData] = useState([]);
+  const [queryFace, setQueryFace] = useState([]);
 
   const columns = [
     {
@@ -103,7 +104,21 @@ const FaceView = () => {
   }
 
   const handleUpload = () => {
-
+    let selectedFile = null;
+    document.getElementById('fileInput').addEventListener('change', function () {
+      selectedFile = this.files[0];
+      service.face.search(selectedFile, selectedVideoId).then(res => {
+        message.success('搜索成功');
+        const result = res.data.data;
+        setQueryFace(result);
+      }).catch(err => {
+        notification.error({
+          message: '上传失败',
+          description: `${err}`
+        });
+      });
+    });
+    document.getElementById('fileInput').click();
   }
 
   // eslint-disable-next-line
@@ -141,9 +156,19 @@ const FaceView = () => {
           />
         </Col>
         <Col span={8} className='col-right'>
-
+          <div className='img-list'>
+            {queryFace.map((item, index) => {
+              const faceImage = `${window.baseURL}face/getImage?image=${item}`;
+              return (
+                <div key={index} className='plate-item'>
+                  <img className='img' src={faceImage} loading='lazy' />
+                </div>
+              )
+            })}
+          </div>
         </Col>
       </Row>
+      <input type="file" id="fileInput" style={{ display: "none" }} />
     </div>
   );
 }
