@@ -116,6 +116,18 @@ const service = {
         }
       })
     }
+  },
+  face: {
+    searchAll: (videoId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/face/searchAll',
+        params: {
+          videoId
+        }
+      })
+    },
   }
 }
 
