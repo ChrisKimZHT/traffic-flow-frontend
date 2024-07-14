@@ -86,14 +86,16 @@ const TaskView = () => {
           <Button type='primary' className='btn' onClick={refreshData} shape='circle'><RedoOutlined /></Button>
         </div>
       </div>
-      <Table
-        className='table'
-        loading={isLoading}
-        columns={columns}
-        dataSource={tableData}
-        bordered={true}
-        pagination={{ position: ["bottomCenter"] }}
-      />
+      <div className='table-container'>
+        <Table
+          className='table'
+          loading={isLoading}
+          columns={columns}
+          dataSource={tableData}
+          bordered={true}
+          pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+        />
+      </div>
       <input type="file" id="fileInput" style={{ display: "none" }} />
     </div>
   );

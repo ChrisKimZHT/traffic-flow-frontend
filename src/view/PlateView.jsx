@@ -118,39 +118,45 @@ const PlateView = () => {
       </div>
       <Row className='row'>
         <Col span={8} className='col-left'>
-          <Table
-            className='table'
-            loading={isLoading}
-            columns={columns}
-            dataSource={tableData}
-            bordered={true}
-            rowSelection={rowSelection}
-            pagination={{ position: ["bottomCenter"] }}
-          />
+          <div className='table-container'>
+            <Table
+              className='table'
+              loading={isLoading}
+              columns={columns}
+              dataSource={tableData}
+              bordered={true}
+              rowSelection={rowSelection}
+              pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+            />
+          </div>
         </Col>
         <Col span={8} className='col-mid'>
-          <Table
-            className='table'
-            columns={plateColumns}
-            dataSource={plateData}
-            bordered={true}
-            pagination={{ position: ["bottomCenter"] }}
-          />
+          <div className='table-container'>
+            <Table
+              className='table'
+              columns={plateColumns}
+              dataSource={plateData}
+              bordered={true}
+              pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+            />
+          </div>
         </Col>
         <Col span={8} className='col-right'>
-          <Space.Compact>
-            <Input className='plate-input' addonBefore="车牌号" value={plateStr} onChange={(e) => { setPlateStr(e.target.value) }} />
-            <Button type='primary' onClick={(e) => handleSearchPlate()} disabled={selectedRowKeys.length === 0}><SearchOutlined /></Button>
-          </Space.Compact>
-          <div className='img-list'>
-            {plateData.map((item, index) => {
-              const boxedImageUrl = `${window.baseURL}plate/getImage?video=${videoName}&imageType=boxed&boxId=${item.box_id}`;
-              return (
-                <div key={index} className='plate-item'>
-                  <img className='img' src={boxedImageUrl} loading='lazy'/>
-                </div>
-              )
-            })}
+          <div className='result-container'>
+            <Space.Compact className='plate-input'>
+              <Input addonBefore="车牌号" value={plateStr} onChange={(e) => { setPlateStr(e.target.value) }} />
+              <Button type='primary' onClick={(e) => handleSearchPlate()} disabled={selectedRowKeys.length === 0}><SearchOutlined /></Button>
+            </Space.Compact>
+            <div className='img-list'>
+              {plateData.map((item, index) => {
+                const boxedImageUrl = `${window.baseURL}plate/getImage?video=${videoName}&imageType=boxed&boxId=${item.box_id}`;
+                return (
+                  <div key={index} className='plate-item'>
+                    <img className='img' src={boxedImageUrl} loading='lazy' />
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </Col>
       </Row>

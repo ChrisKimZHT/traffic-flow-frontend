@@ -15,6 +15,13 @@
     }
   }
 
+  .table-container {
+    background-color: white;
+    border-radius: 8px;
+    min-height: 80vh;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
   .row {
     margin-top: 10px;
   }
@@ -26,14 +33,23 @@
   .col-right {
     padding-left: 10px;
 
-    .img-list {
-      margin-top: 10px;
-      padding: 10px;
+    .result-container {
       background-color: white;
-      min-height: 50vh;
-      max-height: 75vh;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .plate-input {
+      width: 100%;
+    }
+
+    .img-list {
+      margin-top: 10px;
+      background-color: white;
+      max-height: 72vh;
       overflow-y: auto;
 
       .img {

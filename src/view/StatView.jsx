@@ -74,15 +74,17 @@ const StatView = () => {
       </div>
       <Row className='row'>
         <Col span={8} className='col-left'>
-          <Table
-            className='table'
-            loading={isLoading}
-            columns={columns}
-            dataSource={tableData}
-            bordered={true}
-            rowSelection={rowSelection}
-            pagination={{ position: ["bottomCenter"] }}
-          />
+          <div className='table-container'>
+            <Table
+              className='table'
+              loading={isLoading}
+              columns={columns}
+              dataSource={tableData}
+              bordered={true}
+              rowSelection={rowSelection}
+              pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+            />
+          </div>
         </Col>
         <Col span={16} className='col-right'>
           <video className='video' controls preload='auto' key={selectedVideoId}>

@@ -53,15 +53,17 @@ const VideoDetailView = () => {
         </Col>
         <Col span={6} className='col-right'>
           <div className='title'><InfoCircleOutlined /> 信息</div>
-          <Input className='info' addonBefore="编号" value={videoInfo?.videoId} disabled />
-          <Input className='info' addonBefore="标题" value={title} onChange={(e) => { setTitle(e.target.value) }} />
-          <Input className='info' addonBefore="描述" value={description} onChange={(e) => { setDescription(e.target.value) }} />
-          <Input className='info' addonBefore="文件名称" value={videoInfo?.fileName} disabled />
-          <Input className='info' addonBefore="文件大小" value={parseFileSize(videoInfo?.fileSize)} disabled />
-          <Input className='info' addonBefore="上传时间" value={dayjs.unix(videoInfo?.uploadTime).format('YYYY-MM-DD HH:mm:ss')} disabled />
-          <Button className='confirm-btn' type='primary' onClick={handleUpdateInfo}>
-            <CheckCircleTwoTone /> 确认
-          </Button>
+          <div className='info-container'>
+            <Input className='info' addonBefore="编号" value={videoInfo?.videoId} disabled />
+            <Input className='info' addonBefore="标题" value={title} onChange={(e) => { setTitle(e.target.value) }} />
+            <Input className='info' addonBefore="描述" value={description} onChange={(e) => { setDescription(e.target.value) }} />
+            <Input className='info' addonBefore="文件名称" value={videoInfo?.fileName} disabled />
+            <Input className='info' addonBefore="文件大小" value={parseFileSize(videoInfo?.fileSize)} disabled />
+            <Input className='info' addonBefore="上传时间" value={dayjs.unix(videoInfo?.uploadTime).format('YYYY-MM-DD HH:mm:ss')} disabled />
+            <Button className='confirm-btn' type='primary' onClick={handleUpdateInfo}>
+              <CheckCircleTwoTone /> 确认
+            </Button>
+          </div>
         </Col>
       </Row>
     </div>

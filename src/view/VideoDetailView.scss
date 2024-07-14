@@ -9,16 +9,26 @@
     border-radius: 10px;
   }
 
-  .info {
-    margin-top: 10px;
-  }
-
   .col-right {
     padding-left: 10px;
-  }
 
-  .confirm-btn {
-    float: right;
-    margin-top: 10px;
+    .info-container {
+      background-color: white;
+      min-height: 79vh;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #e8e8e8;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+      .info {
+        margin-bottom: 10px;
+      }
+
+      .confirm-btn {
+        float: right;
+        margin-top: 10px;
+      }
+    }
   }
 }

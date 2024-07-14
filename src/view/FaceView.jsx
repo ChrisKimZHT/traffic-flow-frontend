@@ -136,24 +136,28 @@ const FaceView = () => {
       </div>
       <Row className='row'>
         <Col span={8} className='col-left'>
-          <Table
-            className='table'
-            loading={isLoading}
-            columns={columns}
-            dataSource={tableData}
-            bordered={true}
-            rowSelection={rowSelection}
-            pagination={{ position: ["bottomCenter"] }}
-          />
+          <div className='table-container'>
+            <Table
+              className='table'
+              loading={isLoading}
+              columns={columns}
+              dataSource={tableData}
+              bordered={true}
+              rowSelection={rowSelection}
+              pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+            />
+          </div>
         </Col>
         <Col span={8} className='col-mid'>
-          <Table
-            className='table'
-            columns={faceColumns}
-            dataSource={faceData}
-            bordered={true}
-            pagination={{ position: ["bottomCenter"] }}
-          />
+          <div className='table-container'>
+            <Table
+              className='table'
+              columns={faceColumns}
+              dataSource={faceData}
+              bordered={true}
+              pagination={{ position: ["bottomCenter"], pageSize: 7 }}
+            />
+          </div>
         </Col>
         <Col span={8} className='col-right'>
           <div className='img-list'>

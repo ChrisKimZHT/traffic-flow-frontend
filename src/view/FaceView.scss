@@ -15,6 +15,13 @@
       }
     }
   
+    .table-container {
+      background-color: white;
+      border-radius: 8px;
+      min-height: 80vh;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+    
     .row {
       margin-top: 10px;
     }
@@ -29,8 +36,7 @@
       .img-list {
         padding: 10px;
         background-color: white;
-        min-height: 50vh;
-        max-height: 75vh;
+        height: 80vh;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         overflow-y: auto;
