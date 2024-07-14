@@ -83,6 +83,16 @@ const service = {
         }
       })
     },
+    runFaceDetection: (videoId) => {
+      return axios({
+        baseURL,
+        method: 'get',
+        url: '/task/runFaceDetection',
+        params: {
+          videoId
+        }
+      })
+    },
     log: (taskId) => {
       return axios({
         baseURL,

@@ -69,7 +69,7 @@ const VideoView = () => {
     {
       title: '人脸分析',
       key: 'faceProcessed',
-      render: (record) => statusTag(record.faceProcessed),
+      render: (record) => statusTag(record.faceProcessed, () => runFaceDetection(record.videoId)),
     },
     {
       title: '车牌分析',
@@ -97,6 +97,18 @@ const VideoView = () => {
 
   const runPlateDetection = (videoId) => {
     service.task.runPlateDetection(videoId).then(res => {
+      message.success('任务提交成功');
+      refreshData();
+    }).catch(err => {
+      notification.error({
+        message: '任务提交失败',
+        description: `${err}`
+      });
+    });
+  }
+
+  const runFaceDetection = (videoId) => {
+    service.task.runFaceDetection(videoId).then(res => {
       message.success('任务提交成功');
       refreshData();
     }).catch(err => {
