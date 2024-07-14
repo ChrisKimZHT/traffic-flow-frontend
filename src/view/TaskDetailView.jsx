@@ -26,8 +26,8 @@ const TaskDetailView = () => {
 
   useEffect(() => {
     refreshData()
-    const interval = setInterval(refreshData, 500);
-    return () => clearInterval(interval);
+    // const interval = setInterval(refreshData, 500);
+    // return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);
 
